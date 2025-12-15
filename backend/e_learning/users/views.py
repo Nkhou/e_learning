@@ -13,8 +13,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.authentication import BasicAuthentication
+from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 from django.db.models import Avg, Count, Sum
 import logging
@@ -874,28 +874,28 @@ class UpdateUserView(APIView):
             
             first_name = request.data.get('first_name')
             last_name = request.data.get('last_name')
-            privilege = request.data.get('privilege')
+            # privilege = request.data.get('privilege')
             
             if first_name:
                 user.first_name = first_name
             if last_name:
                 user.last_name = last_name
             
-            if privilege:
-                if request.user.privilege != 'A':
-                    return Response(
-                        {"error": "Only admins can change user privileges"},
-                        status=status.HTTP_403_FORBIDDEN
-                    )
+            # if privilege:
+            #     if request.user.privilege != 'A':
+            #         return Response(
+            #             {"error": "Only admins can change user privileges"},
+            #             status=status.HTTP_403_FORBIDDEN
+            #         )
                 
-                valid_privileges = ['A', 'AP', 'F', 'O']
-                if privilege not in valid_privileges:
-                    return Response(
-                        {"error": f"Invalid privilege. Must be one of: {', '.join(valid_privileges)}"},
-                        status=status.HTTP_400_BAD_REQUEST
-                    )
+            #     valid_privileges = ['A', 'AP', 'F', 'O']
+            #     if privilege not in valid_privileges:
+            #         return Response(
+            #             {"error": f"Invalid privilege. Must be one of: {', '.join(valid_privileges)}"},
+            #             status=status.HTTP_400_BAD_REQUEST
+            #         )
                 
-                user.privilege = privilege
+            #     user.privilege = privilege
             
             serializer = CustomUserSerializer(user, data=request.data, partial=True)
             
@@ -931,20 +931,17 @@ class SearchUserView(APIView):
     
     def get(self, request):
         try:
-            search_query = request.query_params.get('email', '').strip()
-            
+            search_query = request.data.get('email', '').strip()
             if not search_query:
                 return Response(
                     {"error": "Search query is required"},
                     status=status.HTTP_400_BAD_REQUEST
                 )
-            
             users = CustomUser.objects.filter(
                 email__icontains=search_query,
                 approval_status='approved',
                 status=1
             )[:10]
-            
             results = []
             for user in users:
                 results.append({
@@ -952,7 +949,7 @@ class SearchUserView(APIView):
                     'email': user.email,
                     'first_name': user.first_name,
                     'last_name': user.last_name,
-                    'full_name': user.full_name,
+                    # 'full_name': user.full_name,
                     'privilege': user.privilege,
                     'privilege_display': user.get_privilege_display()
                 })
