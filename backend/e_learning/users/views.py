@@ -141,7 +141,7 @@ class RegisterView(APIView):
             first_name = request.data.get('first_name', '').strip()
             last_name = request.data.get('last_name', '').strip()
             privilege = request.data.get('privilege', 'AP').strip().upper()
-            approval_status = request.data.get('approval_status', 'pending')
+            # approval_status = request.data.get('approval_status', 'pending')
             
             # Check if email already exists
             if CustomUser.objects.filter(email=email).exists():
@@ -193,7 +193,7 @@ class RegisterView(APIView):
                     'first_name': first_name,
                     'last_name': last_name,
                     'privilege': privilege,
-                    'approval_status': approval_status or 'pending',
+                    'approval_status': 'pending',
                 }
                 
                 serializer = CustomUserSerializer(data=user_data)
@@ -250,7 +250,7 @@ class RegisterView(APIView):
                     'first_name': first_name,
                     'last_name': last_name,
                     'privilege': privilege,
-                    'approval_status': approval_status or 'pending',
+                    'approval_status': 'pending',
                 }
                 
                 serializer = CustomUserSerializer(data=user_data)
@@ -259,7 +259,7 @@ class RegisterView(APIView):
                     
                     # Create organization
                     org_data = {
-                        'user': user.id,
+                        'user': user,
                         'name': name,
                         'organization_type': organization_type,
                         'contact_email': contact_email,
@@ -949,7 +949,6 @@ class SearchUserView(APIView):
                     'email': user.email,
                     'first_name': user.first_name,
                     'last_name': user.last_name,
-                    # 'full_name': user.full_name,
                     'privilege': user.privilege,
                     'privilege_display': user.get_privilege_display()
                 })

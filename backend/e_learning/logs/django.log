@@ -8055,3 +8055,175 @@ INFO 2025-12-15 10:26:23,874 basehttp 167 136534313404160 "GET /api/users/search
 INFO 2025-12-15 10:26:34,770 basehttp 167 136534323889920 "GET /api/health/ HTTP/1.1" 200 159
 INFO 2025-12-15 10:26:47,243 autoreload 167 136534488737600 /app/e_learning/users/views.py changed, reloading.
 INFO 2025-12-15 10:26:48,016 autoreload 179 136671671326528 Watching for file changes with StatReloader
+INFO 2025-12-15 10:27:04,820 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:27:34,861 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:28:04,920 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:28:34,960 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:29:05,000 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:29:35,041 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:30:05,082 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:30:35,123 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:31:05,172 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:31:35,215 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:32:05,260 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:32:35,311 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:33:05,352 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:33:35,394 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:34:05,446 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:34:35,485 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:35:05,527 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:35:35,577 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:36:05,621 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:36:35,689 basehttp 179 136671576196864 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:36:53,238 autoreload 179 136671671326528 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 10:36:54,060 autoreload 340 140148294747968 Watching for file changes with StatReloader
+INFO 2025-12-15 10:37:05,732 basehttp 340 140148132022016 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:37:35,770 basehttp 340 140148132022016 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:38:05,814 basehttp 340 140148132022016 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:38:35,858 basehttp 340 140148132022016 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:39:05,900 basehttp 340 140148132022016 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:39:35,941 basehttp 340 140148132022016 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:40:05,989 basehttp 340 140148132022016 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:40:07,355 autoreload 340 140148294747968 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:40:08,049 autoreload 398 134212994447168 Watching for file changes with StatReloader
+INFO 2025-12-15 10:40:14,308 autoreload 398 134212994447168 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:40:14,925 autoreload 400 138059403585344 Watching for file changes with StatReloader
+INFO 2025-12-15 10:40:39,320 autoreload 400 138059403585344 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:40:40,132 autoreload 409 134424392566592 Watching for file changes with StatReloader
+INFO 2025-12-15 10:40:42,391 autoreload 409 134424392566592 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:40:43,053 autoreload 411 129546208085824 Watching for file changes with StatReloader
+INFO 2025-12-15 10:40:49,305 autoreload 411 129546208085824 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:40:49,907 autoreload 413 131367933310784 Watching for file changes with StatReloader
+INFO 2025-12-15 10:40:56,157 autoreload 413 131367933310784 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:40:56,974 autoreload 415 124098119628608 Watching for file changes with StatReloader
+INFO 2025-12-15 10:40:59,206 autoreload 415 124098119628608 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:40:59,855 autoreload 417 123872866666304 Watching for file changes with StatReloader
+INFO 2025-12-15 10:41:05,127 autoreload 417 123872866666304 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:41:05,807 autoreload 419 136873322751808 Watching for file changes with StatReloader
+INFO 2025-12-15 10:41:36,436 autoreload 419 136873322751808 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:41:37,142 autoreload 435 135496330831680 Watching for file changes with StatReloader
+INFO 2025-12-15 10:43:34,028 autoreload 435 135496330831680 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:43:34,736 autoreload 458 140254194968384 Watching for file changes with StatReloader
+INFO 2025-12-15 10:43:42,033 autoreload 458 140254194968384 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:43:42,834 autoreload 467 139874305652544 Watching for file changes with StatReloader
+INFO 2025-12-15 10:43:45,081 autoreload 467 139874305652544 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:43:45,709 autoreload 469 126044601526080 Watching for file changes with StatReloader
+INFO 2025-12-15 10:43:57,004 autoreload 469 126044601526080 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:43:57,623 autoreload 471 124832386541376 Watching for file changes with StatReloader
+INFO 2025-12-15 10:44:04,918 autoreload 471 124832386541376 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:44:05,576 autoreload 473 124655567386432 Watching for file changes with StatReloader
+INFO 2025-12-15 10:44:10,837 autoreload 473 124655567386432 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:44:11,471 autoreload 482 130523717744448 Watching for file changes with StatReloader
+INFO 2025-12-15 10:46:30,881 autoreload 482 130523717744448 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:46:31,552 autoreload 512 133485222635328 Watching for file changes with StatReloader
+INFO 2025-12-15 10:47:07,254 autoreload 512 133485222635328 /app/e_learning/users/admin.py changed, reloading.
+INFO 2025-12-15 10:47:07,895 autoreload 528 125005254608704 Watching for file changes with StatReloader
+INFO 2025-12-15 10:47:36,687 basehttp 528 125005088163584 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:48:06,733 basehttp 528 125005088163584 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:48:36,773 basehttp 528 125005088163584 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:49:06,814 basehttp 528 125005088163584 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:49:15,020 basehttp 528 125005088163584 "GET /admin/ HTTP/1.1" 200 6644
+INFO 2025-12-15 10:49:36,869 basehttp 528 125005067192064 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:50:06,909 basehttp 528 125005067192064 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:50:36,949 basehttp 528 125005067192064 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:51:06,993 basehttp 528 125005067192064 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:51:37,035 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:52:07,078 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:52:37,120 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:53:07,159 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:53:37,198 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:53:42,335 basehttp 528 125005067192064 "GET /api/users/search/ HTTP/1.1" 200 169
+INFO 2025-12-15 10:54:07,239 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:54:37,284 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:55:07,325 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:55:37,366 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:56:07,411 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:56:37,452 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:57:07,493 basehttp 528 125005077677824 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:57:14,469 autoreload 528 125005254608704 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 10:57:15,191 autoreload 694 138498702255936 Watching for file changes with StatReloader
+INFO 2025-12-15 10:57:37,537 basehttp 694 138498533230336 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:58:07,583 basehttp 694 138498533230336 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:58:28,746 autoreload 694 138498702255936 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 10:58:29,455 autoreload 712 131967095273280 Watching for file changes with StatReloader
+INFO 2025-12-15 10:58:37,625 basehttp 712 131966932354816 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:59:07,669 basehttp 712 131966932354816 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:59:35,815 autoreload 712 131967095273280 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 10:59:36,485 autoreload 730 140495290758976 Watching for file changes with StatReloader
+INFO 2025-12-15 10:59:37,718 basehttp 730 140495126791936 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 10:59:38,785 autoreload 730 140495290758976 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 10:59:39,415 autoreload 740 138574082967360 Watching for file changes with StatReloader
+INFO 2025-12-15 10:59:42,674 autoreload 740 138574082967360 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 10:59:43,329 autoreload 742 128649543542592 Watching for file changes with StatReloader
+INFO 2025-12-15 10:59:49,638 autoreload 742 128649543542592 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 10:59:50,250 autoreload 744 124051595990848 Watching for file changes with StatReloader
+INFO 2025-12-15 11:00:07,781 basehttp 744 124051433457408 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:00:37,819 basehttp 744 124051433457408 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:01:07,857 basehttp 744 124051433457408 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:01:37,899 basehttp 744 124051433457408 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:02:07,938 basehttp 744 124051433457408 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:02:38,011 basehttp 744 124051433457408 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:03:08,053 basehttp 744 124051433457408 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:03:38,095 basehttp 744 124051433457408 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:04:08,134 basehttp 744 124051433457408 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:04:13,820 autoreload 744 124051595990848 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 11:04:14,681 autoreload 818 125277306771264 Watching for file changes with StatReloader
+INFO 2025-12-15 11:04:15,942 autoreload 818 125277306771264 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 11:04:16,575 autoreload 820 137005775001408 Watching for file changes with StatReloader
+INFO 2025-12-15 11:04:31,005 autoreload 820 137005775001408 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 11:04:31,670 autoreload 822 131832911464256 Watching for file changes with StatReloader
+INFO 2025-12-15 11:04:38,175 basehttp 822 131832743986944 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:04:47,103 autoreload 822 131832911464256 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 11:04:47,818 autoreload 832 129700715763520 Watching for file changes with StatReloader
+WARNING 2025-12-15 11:05:04,786 log 832 129700542285568 Method Not Allowed: /api/users/register/
+WARNING 2025-12-15 11:05:04,786 basehttp 832 129700542285568 "GET /api/users/register/ HTTP/1.1" 405 57
+INFO 2025-12-15 11:05:08,221 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+WARNING 2025-12-15 11:05:11,108 log 832 129700542285568 Bad Request: /api/users/register/
+WARNING 2025-12-15 11:05:11,108 basehttp 832 129700542285568 "POST /api/users/register/ HTTP/1.1" 400 140
+INFO 2025-12-15 11:05:38,271 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:06:08,317 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:06:38,361 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:07:08,401 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+WARNING 2025-12-15 11:07:30,335 log 832 129700542285568 Bad Request: /api/users/register/
+WARNING 2025-12-15 11:07:30,336 basehttp 832 129700542285568 "POST /api/users/register/ HTTP/1.1" 400 98
+INFO 2025-12-15 11:07:38,445 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:08:08,489 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:08:38,546 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:09:08,585 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:09:38,679 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+WARNING 2025-12-15 11:10:07,959 log 832 129700542285568 Bad Request: /api/users/register/
+WARNING 2025-12-15 11:10:07,959 basehttp 832 129700542285568 "POST /api/users/register/ HTTP/1.1" 400 98
+INFO 2025-12-15 11:10:08,727 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+ERROR 2025-12-15 11:10:24,611 log 832 129700542285568 Internal Server Error: /api/users/register/
+ERROR 2025-12-15 11:10:24,612 basehttp 832 129700542285568 "POST /api/users/register/ HTTP/1.1" 500 63
+INFO 2025-12-15 11:10:38,785 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:11:08,821 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:11:38,859 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:12:08,900 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:12:38,947 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:13:08,984 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:13:39,028 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:14:09,072 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:14:39,110 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:15:09,152 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:15:39,193 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:16:09,247 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:16:39,324 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:17:09,403 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:17:39,445 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:18:09,516 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:18:39,603 basehttp 832 129700552771328 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:18:56,802 autoreload 832 129700715763520 /app/e_learning/users/views.py changed, reloading.
+INFO 2025-12-15 11:18:57,748 autoreload 1060 132296761440064 Watching for file changes with StatReloader
+INFO 2025-12-15 11:19:09,654 basehttp 1060 132296598357760 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:19:39,696 basehttp 1060 132296598357760 "GET /api/health/ HTTP/1.1" 200 159
+WARNING 2025-12-15 11:19:45,719 log 1060 132296598357760 Bad Request: /api/users/register/
+WARNING 2025-12-15 11:19:45,720 basehttp 1060 132296598357760 "POST /api/users/register/ HTTP/1.1" 400 32
+INFO 2025-12-15 11:20:09,742 basehttp 1060 132296587872000 "GET /api/health/ HTTP/1.1" 200 159
+INFO 2025-12-15 11:20:39,623 basehttp 1060 132296598357760 "POST /api/users/register/ HTTP/1.1" 201 134
+INFO 2025-12-15 11:20:39,799 basehttp 1060 132296587872000 "GET /api/health/ HTTP/1.1" 200 159
+WARNING 2025-12-15 11:20:54,492 log 1060 132296598357760 Bad Request: /api/users/register/
+WARNING 2025-12-15 11:20:54,492 basehttp 1060 132296598357760 "POST /api/users/register/ HTTP/1.1" 400 134
+WARNING 2025-12-15 11:21:04,043 log 1060 132296598357760 Bad Request: /api/users/register/
+WARNING 2025-12-15 11:21:04,043 basehttp 1060 132296598357760 "POST /api/users/register/ HTTP/1.1" 400 93
+INFO 2025-12-15 11:21:09,838 basehttp 1060 132296587872000 "GET /api/health/ HTTP/1.1" 200 159
