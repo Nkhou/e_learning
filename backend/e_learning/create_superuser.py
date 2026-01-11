@@ -13,7 +13,7 @@ def create_superuser():
     password = os.environ.get('SUPERUSER_PASSWORD', 'admin123')
     first_name = os.environ.get('SUPERUSER_FIRSTNAME', 'admin')
     last_name = os.environ.get('SUPERUSER_LASTNAME', 'admin')
-    
+    var = os.environ.get('VARIABLE', 'VALUE')
     if not User.objects.filter(username=username).exists():
         User.objects.create_superuser(
             username=username,
@@ -21,7 +21,7 @@ def create_superuser():
             password=password,
             first_name=first_name,
             last_name=last_name,
-            privilege='A'  # Admin privilege
+            privilege='A' #ADMIN PRIVILEGE
         )
         print(f"Superuser '{username}' created successfully!")
     else:

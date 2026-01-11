@@ -720,23 +720,21 @@ class CourseTag(models.Model):
     class Meta:
         unique_together = ('course', 'tag')
 
-class DetailedTimeTracking(models.Model):
-    """Tracking détaillé du temps par contenu"""
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    content = models.ForeignKey(CourseContent, on_delete=models.CASCADE)
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
-    duration_seconds = models.IntegerField()  # Durée en secondes
-    progress_percentage = models.FloatField(default=0.0)
-    created_at = models.DateTimeField(auto_now_add=True)
+# class DetailedTimeTracking(models.Model):
+#     """Tracking détaillé du temps par contenu"""
+#     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+#     content = models.ForeignKey(CourseContent, on_delete=models.CASCADE)
+#     start_time = models.DateTimeField()
+#     end_time = models.DateTimeField()
+#     duration_seconds = models.IntegerField()  # Durée en secondes
+#     progress_percentage = models.FloatField(default=0.0)
+#     created_at = models.DateTimeField(auto_now_add=True)
     
-    class Meta:
-        indexes = [
-            models.Index(fields=['user', 'content']),
-            models.Index(fields=['start_time']),
-        ]
-
-
+#     class Meta:
+#         indexes = [
+#             models.Index(fields=['user', 'content']),
+#             models.Index(fields=['start_time']),
+#         ]
 
 class TimeTracking(models.Model):
     """Suivi du temps global par cours"""

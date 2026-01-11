@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue à Elevia</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(180deg, #8b9dc3 0%, #dfe3e8 100%);
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .email-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 50px 45px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 26px solid white;
+            position: absolute;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 30px 0;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4a4a4a;
+            margin: 0 0 20px 0;
+        }
+
+        .credentials {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #c87d4e;
+        }
+
+        .credentials p {
+            margin: 8px 0;
+            font-size: 15px;
+        }
+
+        .action-button {
+            display: inline-block;
+            background: #c87d4e;
+            color: white;
+            padding: 14px 50px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 30px 0;
+            font-size: 15px;
+            transition: background 0.3s;
+        }
+
+        .action-button:hover {
+            background: #24236d;
+        }
+
+        .security-note {
+            font-size: 14px;
+            color: #666;
+            margin: 25px 0;
+        }
+
+        .support-info {
+            font-size: 14px;
+            color: #666;
+            margin: 25px 0;
+        }
+
+        .closing {
+            font-size: 15px;
+            color: #4a4a4a;
+            margin: 25px 0 10px 0;
+        }
+
+        .signature {
+            font-size: 15px;
+            color: #4a4a4a;
+            font-weight: 500;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: #999;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .footer-copyright {
+            font-size: 11px;
+            color: #aaa;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+    <img src="{{ loginImageUrl }}" alt="Elevia Logo" 
+         style="width:60px; height:60px; border-radius:8px; display:block; border:0;"
+         width="60" height="60">
+</div>
+        <h1>Bienvenu à Elevia</h1>
+        <p>Bonjour {user.first_name} {user.last_name},</p>
+        <p>Vous avez été ajouté à l'organisation "{organization.name}" dans le groupe "{member.group.name}" en tant que {member.get_role_display()}.</p>
+
+        <div class="credentials">
+            <p><strong>Votre code de vérification est :</strong> {{ user.email }}</p>
+            <p><strong>Mot de passe temporaire :</strong> {code}</p>
+        </div>
+        <center>
+            <a href="{{ login_link }}" class="action-button">Accéder à la
+                plateforme</a>
+        </center>
+        <p class="security-note">
+        
+        Cordialement,
+        L'équipe de {organization.name}
+        <p class="signature">L'équipe Elevia.</p>
+        <div class="footer">
+            <p class="footer-copyright">© 2025 Elevia. Tous droits
+                réservés</p>
+        </div>
+    </div>
+</body>
+
+</html>

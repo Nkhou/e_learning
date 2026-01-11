@@ -20,6 +20,8 @@ User = get_user_model()
 def generate_random_password():
     alphabet = string.ascii_letters + string.digits + "!@#$%^&*"
     return ''.join(secrets.choice(alphabet) for _ in range(12))
+
+
 class CustomUserSerializer(serializers.ModelSerializer):
     full_name = serializers.SerializerMethodField()
     is_active_user = serializers.BooleanField(read_only=True)
@@ -32,7 +34,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
             'id', 'username', 'email', 'first_name', 'last_name', 'full_name',
             'privilege', 'status', 'approval_status', 'date_joined', 'last_login',
             'is_active_user', 'can_access_platform', 'needs_approval',
-            'approval_requested_at', 'approved_at', 'rejection_reason'
+            'approval_requested_at', 'approved_at', 'rejection_reason', 'is_active'
         ]
         extra_kwargs = {
             'password': {'write_only': True}

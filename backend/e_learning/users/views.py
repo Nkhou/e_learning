@@ -72,32 +72,32 @@ def generate_verification_code(length=6):
     """Generate a random 6-digit verification code"""
     return ''.join(random.choices(string.digits, k=length))
 
-def send_login_code_email(user, code):
-    """Send login verification code to user's email"""
-    subject = 'Your Login Code - E-Learning Platform'
-    message = f"""
-Hello {user.first_name} {user.last_name},
-
-Someone requested to sign in to your E-Learning Platform account.
-
-Your verification code is: {code}
-
-This code will expire in 10 minutes.
-
-If you didn't request this code, please ignore this email and your account will remain secure.
-
-Best regards,
-E-Learning Platform Team
-"""
-    
+def send_login_code_email(user, code, request):
+    login_link = "http://localhost:3000/signup"
+    logo_url = request.build_absolute_uri(static('images/logo-colored.png'))
+    message = render_to_string('login_code.html', {
+                   'user': user,
+                   'code': code,
+                   'login_link': login_link,
+                   'loginImageUrl': logo_url
+               })
     from_email = settings.EMAIL_HOST_USER
-    recipient_list = [user.email]
-    
+    recipient_list = [user.email]  # Make it a list!
+
     try:
-        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+        print('ddbbdbdbbdbb', recipient_list)
+        send_mail(
+            subject='Your Login Code',  # Add a subject
+            message='',  # Plain text message (can be empty if using html_message)
+            from_email=from_email,
+            recipient_list=recipient_list,
+            html_message=message,  # Use html_message parameter for HTML content
+            fail_silently=False
+        )
+        print('Email sent successfully to', recipient_list)
         return True
     except Exception as e:
-        print(f"Error sending email: {str(e)}")
+        print(f'Error sending email: {e}')
         return False
 
 # Health Check Views
@@ -223,19 +223,16 @@ class RegisterView(APIView):
                 name = request.data.get('name', '').strip()
                 organization_type = request.data.get('organization_type', '').strip()
                 contact_email = request.data.get('contact_email', '').strip()
-                contact_phone = request.data.get('contact_phone', '').strip()
-                address = request.data.get('address', '').strip()
-                website = request.data.get('website', '').strip()
+                # contact_phone = request.data.get('contact_phone', '').strip()
+                # address = request.data.get('address', '').strip()
+                # website = request.data.get('website', '').strip()
                 
                 # Validate required organization fields
-                if not all([name, organization_type, contact_email, contact_phone, address]):
+                if not all([name, organization_type, contact_email]):
                     missing = []
                     if not name: missing.append('name')
                     if not organization_type: missing.append('organization_type')
                     if not contact_email: missing.append('contact_email')
-                    if not contact_phone: missing.append('contact_phone')
-                    if not address: missing.append('address')
-                    
                     return Response(
                         {
                             "error": "Required organization fields are missing",
@@ -243,7 +240,6 @@ class RegisterView(APIView):
                         },
                         status=status.HTTP_400_BAD_REQUEST
                     )
-                
                 user_data = {
                     'username': username,
                     'email': email,
@@ -252,25 +248,26 @@ class RegisterView(APIView):
                     'privilege': privilege,
                     'approval_status': 'pending',
                 }
-                
+
                 serializer = CustomUserSerializer(data=user_data)
                 if serializer.is_valid():
                     user = serializer.save()
                     
                     # Create organization
                     org_data = {
-                        'user': user,
+                        # 'user': user,
                         'name': name,
                         'organization_type': organization_type,
                         'contact_email': contact_email,
-                        'contact_phone': contact_phone,
-                        'address': address,
-                        'website': website if website else None,
                     }
-                    
+                    print('+++++++++++++++++++++++++++++++++++++')
                     serializer_organization = OrganizationSerializer(data=org_data)
+
                     if serializer_organization.is_valid():
-                        serializer_organization.save()
+                        organization = serializer_organization.save(user=user)
+
+                        print('-------------------------------------------------', serializer)
+                        # serializer_organization.save()
                         return Response(
                             {
                                 "message": "Organization registered successfully. Awaiting approval.",
@@ -302,7 +299,6 @@ class RegisterView(APIView):
                         status=status.HTTP_400_BAD_REQUEST
                     )
             
-            # Handle invalid privilege
             else:
                 return Response(
                     {
@@ -325,12 +321,6 @@ class RegisterView(APIView):
             )
 
 class RequestLoginCodeView(APIView):
-    """
-    Step 1 of login: User provides email, system sends verification code
-    
-    POST /api/users/request-login-code/
-    Body: { "email": "user@example.com" }
-    """
     authentication_classes = [BasicAuthentication]
     permission_classes = [AllowAny]
     
@@ -393,7 +383,7 @@ class RequestLoginCodeView(APIView):
             )
             
             # Send email
-            email_sent = send_login_code_email(user, code)
+            email_sent = send_login_code_email(user, code, request)
             
             if not email_sent:
                 return Response(
@@ -430,10 +420,9 @@ class VerifyLoginCodeView(APIView):
     def get_apprenant_data(self, user):
         """Get data specific to Apprenant (Student)"""
         try:
-            # Get enrolled courses
+            # Get enrolled courses - removed is_active filter
             enrollments = Enrollment.objects.filter(
-                user=user,
-                is_active=True
+                user=user
             ).select_related('course')
             
             enrolled_courses = []
@@ -445,6 +434,7 @@ class VerifyLoginCodeView(APIView):
                     'description': course.description,
                     'progress': enrollment.progress,
                     'enrolled_at': enrollment.enrolled_at,
+                    'completed': enrollment.completed,
                     'instructor_name': course.instructor.get_full_name() if course.instructor else None
                 })
             
@@ -468,8 +458,8 @@ class VerifyLoginCodeView(APIView):
                     'enrolled_courses': enrolled_courses,
                     'enrolled_courses_count': len(enrolled_courses),
                     'available_courses': available_courses_data,
-                    'completed_courses': enrollments.filter(progress=100).count(),
-                    'in_progress_courses': enrollments.filter(progress__gt=0, progress__lt=100).count()
+                    'completed_courses': enrollments.filter(completed=True).count(),
+                    'in_progress_courses': enrollments.filter(completed=False, progress__gt=0).count()
                 }
             }
         except Exception as e:
@@ -489,7 +479,8 @@ class VerifyLoginCodeView(APIView):
             total_students = 0
             
             for course in my_courses:
-                student_count = course.enrollments.filter(is_active=True).count()
+                # Removed is_active filter
+                student_count = course.enrollments.count()
                 total_students += student_count
                 
                 courses_data.append({
@@ -607,7 +598,7 @@ class VerifyLoginCodeView(APIView):
                 'id': u.id,
                 'username': u.username,
                 'email': u.email,
-                'full_name': u.full_name,
+                'full_name': u.full_name(),  # Call the method
                 'privilege': u.privilege,
                 'approval_status': u.approval_status,
                 'date_joined': u.date_joined
@@ -742,7 +733,6 @@ class VerifyLoginCodeView(APIView):
                 {"error": "An error occurred during login"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
-
 # Logout View
 class LogoutView(APIView):
     def post(self, request):
@@ -1444,7 +1434,7 @@ class OrganizationDashboardView(APIView):
         except Exception as e:
             logger.error(f"Error in calculate_consecutive_days: {str(e)}")
             return 0
-
+# @method_decorator(csrf_exempt, name='dispatch')
 class OrganizationGroupsView(APIView):
     """
     Gestion des groupes de l'organisation
@@ -1491,6 +1481,8 @@ class OrganizationGroupsView(APIView):
     
     def post(self, request):
         try:
+            print('+++++++++++++++++++++++++++++++++++++++++')
+            print('user privilege', request.user.privilege)
             if request.user.privilege != 'O':
                 return Response(
                     {'error': 'Accès réservé aux organisations'},
@@ -1503,14 +1495,15 @@ class OrganizationGroupsView(APIView):
                     {'error': 'Organisation non trouvée'},
                     status=status.HTTP_404_NOT_FOUND
                 )
-            
+            print('+++++++++++++++++++++++++++++++++++++++++')
             serializer = CreateGroupSerializer(
                 data=request.data,
                 context={'organization': organization}
             )
-            
+            print('1+++++++++++++++++++++++++++++++++++++++++')
             if serializer.is_valid():
-                groupe = serializer.save(org=organization)
+                groupe = serializer.save()
+                print('2+++++++++++++++++++++++++++++++++++++++++')
                 organization.update_statistics()
                 
                 return Response(
@@ -1562,7 +1555,7 @@ class OrganizationGroupDetailView(APIView):
                 'membres': membres_serializer.data,
                 'nombre_membres': membres.count()
             })
-            
+
         except Http404:
             return Response(
                 {'error': 'Groupe non trouvé'},

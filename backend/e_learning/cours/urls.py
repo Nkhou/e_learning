@@ -19,6 +19,9 @@ urlpatterns = [
     path('all/', views.AllCoursesView.as_view(), name='all-courses'),
     path('filters/', views.CourseFiltersView.as_view(), name='course-filters'),
     path('conditional-display/', views.ConditionalCoursesDisplayView.as_view(), name='conditional-display'),
+    path('create_qcm/', views.CreateQCMContentView.as_view(), name='create_qcm'),
+    path('create_pdf/', views.CreatePDFContentView.as_view(), name='create_pdf'),
+    path('create_video/', views.CreateVideoContentView.as_view(), name='create-video'),
     
     # Subscriptions
     path('<int:pk>/subscribe/', views.SubscribeToCourse.as_view(), name='subscribe'),

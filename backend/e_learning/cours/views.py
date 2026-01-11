@@ -89,7 +89,7 @@ class LoginView(APIView):
                 data = request.data
             
             email = data.get('email')
-            password = data.get('password')
+            password = data.get('code')
             
             if not email or not password:
                 return Response(
@@ -258,6 +258,7 @@ class MarkVideoCompletedView(APIView):
             course = get_object_or_404(Course, id=course_id)
             user = request.user
             content_id = request.data.get('content_id')
+            variable_id = request.data.get('variable_id')
             
             if not content_id:
                 return Response(
@@ -1297,7 +1298,7 @@ class NotificationUnreadCountView(APIView):
 
 class AllCoursesView(APIView):
     """
-    Vue complète pour afficher tous les cours sans département :
+    Vue complète pour afficher tous les cours:
     - Filtres par tags, difficulté, durée, popularité
     - Recherche avancée
     - Pagination intelligente
@@ -1358,7 +1359,7 @@ class AllCoursesView(APIView):
             if content_types:
                 content_types_q = Q()
                 for ct in content_types:
-                    if ct in ['pdf', 'video', 'qcm', 'text', 'audio', 'image']:
+                    if ct in ['pdf', 'video', 'qcm', 'text','image']:
                         content_types_q |= Q(modules__contents__content_type__name=ct)
                 if content_types_q:
                     base_query &= content_types_q
@@ -1732,31 +1733,31 @@ class AllCoursesView(APIView):
         
         subscriber_count = getattr(course, 'subscriber_count', 0) or 0
         if subscriber_count > 100:
-            badges.append({'type': 'very_popular', 'label': 'Très populaire', 'color': 'gold', 'icon': '🔥'})
+            badges.append({'type': 'very_popular', 'label': 'Très populaire', 'color': 'gold'})
         elif subscriber_count > 50:
-            badges.append({'type': 'popular', 'label': 'Populaire', 'color': 'silver', 'icon': '👍'})
+            badges.append({'type': 'popular', 'label': 'Populaire', 'color': 'silver'})
         
         if course.created_at and (timezone.now() - course.created_at).days < 7:
-            badges.append({'type': 'new', 'label': 'Nouveau', 'color': 'green', 'icon': '🆕'})
+            badges.append({'type': 'new', 'label': 'Nouveau', 'color': 'green'})
         
         if hasattr(course, 'last_content_date') and course.last_content_date:
             if (timezone.now() - course.last_content_date).days < 30:
-                badges.append({'type': 'updated', 'label': 'Récemment mis à jour', 'color': 'blue', 'icon': '🔄'})
+                badges.append({'type': 'updated', 'label': 'Récemment mis à jour', 'color': 'blue'})
         
         content_count = getattr(course, 'content_count', 0) or 0
         if content_count > 20:
-            badges.append({'type': 'comprehensive', 'label': 'Complet', 'color': 'purple', 'icon': '📚'})
+            badges.append({'type': 'comprehensive', 'label': 'Complet', 'color': 'purple'})
         
         if course.creator and hasattr(course.creator, 'is_verified') and course.creator.is_verified:
-            badges.append({'type': 'certified', 'label': 'Certifié', 'color': 'orange', 'icon': '✅'})
+            badges.append({'type': 'certified', 'label': 'Certifié', 'color': 'orange'})
         
         quality_score = self.calculate_quality_score(course)
         if quality_score >= 8:
-            badges.append({'type': 'high_quality', 'label': 'Haute qualité', 'color': 'red', 'icon': '⭐'})
+            badges.append({'type': 'high_quality', 'label': 'Haute qualité', 'color': 'red'})
         
         estimated_duration = getattr(course, 'estimated_duration_total', 0) or 0
         if estimated_duration <= 60:
-            badges.append({'type': 'quick', 'label': 'Rapide', 'color': 'teal', 'icon': '⚡'})
+            badges.append({'type': 'quick', 'label': 'Rapide', 'color': 'teal'})
         
         return badges
     
@@ -1891,26 +1892,25 @@ class AllCoursesView(APIView):
     
     def get_available_content_types(self):
         return [
-            {'value': 'pdf', 'label': 'Documents PDF', 'icon': '📄'},
-            {'value': 'video', 'label': 'Vidéos', 'icon': '🎥'},
-            {'value': 'qcm', 'label': 'Quiz/QCM', 'icon': '❓'},
-            {'value': 'text', 'label': 'Textes', 'icon': '📝'},
-            {'value': 'audio', 'label': 'Audios', 'icon': '🎧'},
-            {'value': 'image', 'label': 'Images', 'icon': '🖼️'}
+            {'value': 'pdf', 'label': 'Documents PDF'},
+            {'value': 'video', 'label': 'Vidéos'},
+            {'value': 'qcm', 'label': 'Quiz/QCM'},
+            {'value': 'text', 'label': 'Textes'},
+            {'value': 'image', 'label': 'Images'}
         ]
     
     def get_sort_options(self):
         return [
-            {'value': '-created_at', 'label': 'Plus récent', 'icon': '🆕'},
-            {'value': '-subscriber_count', 'label': 'Plus populaire', 'icon': '🔥'},
-            {'value': '-avg_score', 'label': 'Mieux noté', 'icon': '⭐'},
-            {'value': 'estimated_duration_total', 'label': 'Durée (court → long)', 'icon': '⏱️'},
-            {'value': '-estimated_duration_total', 'label': 'Durée (long → court)', 'icon': '⏱️'},
-            {'value': 'title_of_course', 'label': 'Titre (A-Z)', 'icon': '🔤'},
-            {'value': '-title_of_course', 'label': 'Titre (Z-A)', 'icon': '🔤'},
-            {'value': '-last_content_date', 'label': 'Récemment mis à jour', 'icon': '🔄'},
-            {'value': 'difficulty_score', 'label': 'Difficulté (facile → difficile)', 'icon': '📈'},
-            {'value': '-difficulty_score', 'label': 'Difficulté (difficile → facile)', 'icon': '📉'}
+            {'value': '-created_at', 'label': 'Plus récent'},
+            {'value': '-subscriber_count', 'label': 'Plus populaire'},
+            {'value': '-avg_score', 'label': 'Mieux noté'},
+            {'value': 'estimated_duration_total', 'label': 'Durée (court → long)'},
+            {'value': '-estimated_duration_total', 'label': 'Durée (long → court)'},
+            {'value': 'title_of_course', 'label': 'Titre (A-Z)'},
+            {'value': '-title_of_course', 'label': 'Titre (Z-A)'},
+            {'value': '-last_content_date', 'label': 'Récemment mis à jour'},
+            {'value': 'difficulty_score', 'label': 'Difficulté (facile → difficile)'},
+            {'value': '-difficulty_score', 'label': 'Difficulté (difficile → facile)'}
         ]
     
     def get_filter_summary(self, search, difficulty, duration, tags, content_types, total):
@@ -2146,7 +2146,7 @@ class AllCoursesView(APIView):
             
             if creator_followed:
                 score += 20
-        
+
         quality_score = self.calculate_quality_score(course)
         score += (quality_score / 10) * 20
         
@@ -2218,31 +2218,30 @@ class CourseFiltersView(APIView):
             return Response({
                 'tags': tags_data[:50],
                 'difficulties': [
-                    {'value': 'debutant', 'label': 'Débutant', 'icon': '👶'},
-                    {'value': 'intermediaire', 'label': 'Intermédiaire', 'icon': '📚'},
-                    {'value': 'avance', 'label': 'Avancé', 'icon': '🎓'}
+                    {'value': 'debutant', 'label': 'Débutant'},
+                    {'value': 'intermediaire', 'label': 'Intermédiaire'},
+                    {'value': 'avance', 'label': 'Avancé'}
                 ],
                 'durations': [
-                    {'value': 'short', 'label': 'Court (< 1h)', 'icon': '⚡'},
-                    {'value': 'medium', 'label': 'Moyen (1-5h)', 'icon': '⏱️'},
-                    {'value': 'long', 'label': 'Long (5-10h)', 'icon': '📖'},
-                    {'value': 'very_long', 'label': 'Très long (> 10h)', 'icon': '📚'}
+                    {'value': 'short', 'label': 'Court (< 1h)'},
+                    {'value': 'medium', 'label': 'Moyen (1-5h)'},
+                    {'value': 'long', 'label': 'Long (5-10h)'},
+                    {'value': 'very_long', 'label': 'Très long (> 10h)'}
                 ],
                 'content_types': [
-                    {'value': 'pdf', 'label': 'PDF', 'icon': '📄'},
-                    {'value': 'video', 'label': 'Vidéo', 'icon': '🎥'},
-                    {'value': 'qcm', 'label': 'QCM', 'icon': '❓'},
-                    {'value': 'text', 'label': 'Texte', 'icon': '📝'},
-                    {'value': 'audio', 'label': 'Audio', 'icon': '🎧'},
-                    {'value': 'image', 'label': 'Image', 'icon': '🖼️'}
+                    {'value': 'pdf', 'label': 'PDF'},
+                    {'value': 'video', 'label': 'Vidéo'},
+                    {'value': 'qcm', 'label': 'QCM'},
+                    {'value': 'text', 'label': 'Texte'},
+                    {'value': 'image', 'label': 'Image'}
                 ],
                 'sort_options': [
-                    {'value': '-created_at', 'label': 'Plus récent', 'icon': '🆕'},
-                    {'value': '-subscriber_count', 'label': 'Plus populaire', 'icon': '🔥'},
-                    {'value': 'title_of_course', 'label': 'Titre A-Z', 'icon': '🔤'},
-                    {'value': '-title_of_course', 'label': 'Titre Z-A', 'icon': '🔤'},
-                    {'value': 'estimated_duration_total', 'label': 'Durée croissante', 'icon': '⏱️'},
-                    {'value': '-estimated_duration_total', 'label': 'Durée décroissante', 'icon': '⏱️'}
+                    {'value': '-created_at', 'label': 'Plus récent'},
+                    {'value': '-subscriber_count', 'label': 'Plus populaire'},
+                    {'value': 'title_of_course', 'label': 'Titre A-Z'},
+                    {'value': '-title_of_course', 'label': 'Titre Z-A'},
+                    {'value': 'estimated_duration_total', 'label': 'Durée croissante'},
+                    {'value': '-estimated_duration_total', 'label': 'Durée décroissante'}
                 ],
                 'statistics': {
                     'total_courses': total_courses,
@@ -2377,3 +2376,104 @@ class IsApprenant(IsAuthenticated):
 class IsOrganizationOwner(IsAuthenticated):
     def has_permission(self, request, view):
         return bool(request.user and request.user.is_authenticated and request.user.privilege == 'O')
+    
+
+class CreatePDFContentView(APIView):
+    permission_classes = [IsAuthenticated]
+    parser_classes = [MultiPartParser]
+    
+    def post(self, request, course_id, module_id):
+        print('---------------------------------------------Create PDF content in a module')
+        module = get_object_or_404(Module, pk=module_id)
+        if module.course.creator != request.user and request.user.privilege != 'A' :
+            return Response(
+                {'error': 'You are not the creator of this course'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        content_type, created = ContentType.objects.get_or_create(name='pdf')
+        
+        serializer = PDFContentCreateSerializer(
+            data=request.data,
+            context={
+                'request': request,
+                'module': module,
+                'content_type': content_type
+            }
+        )
+        
+        if serializer.is_valid():
+            content = serializer.save()
+            return Response(
+                CourseContentSerializer(content).data,
+                status=status.HTTP_201_CREATED
+            )
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CreateVideoContentView(APIView):
+    permission_classes = [IsAuthenticated]
+    parser_classes = [MultiPartParser]
+    
+    def post(self, request, course_id, module_id):
+        """Create Video content in a module"""
+        module = get_object_or_404(Module, pk=module_id)
+        
+        if module.course.creator != request.user and request.user.privilege != 'A':
+            return Response(
+                {'error': 'You are not the creator of this course'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        content_type, created = ContentType.objects.get_or_create(name='video')
+        
+        serializer = VideoContentCreateSerializer(
+            data=request.data, 
+            context={
+                'request': request,
+                'module': module,
+                'content_type': content_type
+            }
+        )
+        
+        if serializer.is_valid():
+            content = serializer.save()
+            return Response(
+                CourseContentSerializer(content).data,
+                status=status.HTTP_201_CREATED
+            )
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CreateQCMContentView(APIView):
+    permission_classes = [IsAuthenticated]
+    parser_classes = [JSONParser]
+    
+    def post(self, request, course_id, module_id):
+        """Create QCM quiz content in a module"""
+        module = get_object_or_404(Module, pk=module_id)
+        
+        if module.course.creator != request.user and request.user.privilege != 'A':
+            return Response(
+                {'error': 'You are not the creator of this course'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        content_type, created = ContentType.objects.get_or_create(name='qcm')
+        
+        serializer = QCMContentCreateSerializer(
+            data=request.data, 
+            context={
+                'request': request,
+                'module': module,
+                'content_type': content_type
+            }
+        )
+        
+        if serializer.is_valid():
+            content = serializer.save()
+            return Response(
+                CourseContentSerializer(content).data,
+                status=status.HTTP_201_CREATED
+            )
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
